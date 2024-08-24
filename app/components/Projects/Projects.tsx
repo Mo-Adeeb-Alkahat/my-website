@@ -14,7 +14,7 @@ const Projects = () => {
                 <Project key={project.id} id= {project.id} name= {project.name} image= {project.image} desc= {project.desc} ghLink= {project.ghLink} live = {project.live} ></Project>
               )
     })}</ul>
-    <a href="#" className="bg-red-950 w-24 text-center rounded-md mt-2 mb-5 " > more projects </a>
+    <a href="#" className="bg-red-950  shadow-lg shadow-red-800/50 border-double border-4 border-red-500  w-36 h-20  text-center rounded-md mt-2 mb-5 flex items-center justify-center " > more projects </a>
     </div>
   )
 }
