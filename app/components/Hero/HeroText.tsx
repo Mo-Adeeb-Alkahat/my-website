@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TypeAnimation } from 'react-type-animation';
 
+
 const HeroText = () => {
   const [textColor, setTextColor] = useState('dodgerblue');
 
@@ -34,13 +35,13 @@ const HeroText = () => {
     >
       <TypeAnimation
         sequence={[
-          'React',
+          'Web',
           800,
           () => setTextColor('aqua'),
-          'React Native',
+          'Mobile',
           800,
           () => setTextColor('darkkhaki'),
-          'Python',
+          'Desktop',
           1000,
           '',
           () => setTextColor('dodgerblue'),

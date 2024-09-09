@@ -1,0 +1,1 @@
+declare module 'latest-react-3d-icons'

@@ -1,6 +1,6 @@
 
 .mainNav {
-    @apply w-full fixed top-0 flex flex-col p-4 bg-black text-[#E2E2E2] text-center gap-4 sm:flex-row sm:justify-center
+    @apply w-full fixed top-0 flex flex-col p-4 bg-black   text-center gap-4 sm:flex-row sm:justify-center z-10
 }
 
 .sectionNav {

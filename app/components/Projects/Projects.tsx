@@ -9,12 +9,14 @@ const projectsData: {id:number,name:string,image:string,desc:string,ghLink:strin
 const Projects = () => {
   return (
     <div className="flex flex-col items-center min-h-screen " id="Projects">
-    <ul className="list-none flex flex-col items-center gap-4 lg:flex-row lg:mx-10 lg:mb-14 " >{projectsData.map((project) => {
+    <h2 className="text-4xl underline mb-5">Projects</h2>
+
+    <ul className="list-none flex flex-col items-center gap-4 lg:flex-row lg:mx-10 lg:mb-2 " >{projectsData.map((project) => {
               return (
                 <Project key={project.id} id= {project.id} name= {project.name} image= {project.image} desc= {project.desc} ghLink= {project.ghLink} live = {project.live} ></Project>
               )
     })}</ul>
-    <a href="#" className="bg-red-950  shadow-lg shadow-red-800/50 border-double border-4 border-red-500  w-36 h-20  text-center rounded-md mt-2 mb-5 flex items-center justify-center " > more projects </a>
+    <a href="#" className="bg-red-950  shadow-lg shadow-red-800/50 border-double border-4 border-red-500  w-36 h-20  text-center rounded-md mt-1 mb-8 flex items-center justify-center " > more projects </a>
     </div>
   )
 }
