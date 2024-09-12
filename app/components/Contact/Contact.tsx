@@ -2,76 +2,64 @@
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import emailjs from '@emailjs/browser'
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-
-
-
-
   const [captcha, setCaptcha] = useState<string | null>(null);
-  const inNameRef = useRef<HTMLInputElement>(null)
-  const inEmailRef = useRef<HTMLInputElement>(null)
-  const inSubjectRef = useRef<HTMLInputElement>(null)
-  const inMessageRef = useRef<HTMLTextAreaElement>(null)
+  const inNameRef = useRef<HTMLInputElement>(null);
+  const inEmailRef = useRef<HTMLInputElement>(null);
+  const inSubjectRef = useRef<HTMLInputElement>(null);
+  const inMessageRef = useRef<HTMLTextAreaElement>(null);
   const [emailToSend, setEmailToSend] = useState<{
     fname: string;
     email: string;
     subject: string;
     message: string;
-  }>({fname: '',
-    email: '',
-    subject: '',
-    message: ''});
+  }>({ fname: "", email: "", subject: "", message: "" });
 
-    const isValidEmail = (email:string) : boolean => {
-      const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return regex.test(String(email).toLowerCase())
-  }
+  const isValidEmail = (email: string): boolean => {
+    const regex =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(email).toLowerCase());
+  };
 
   const handleForm = () => {
-    
-    const fname :string = inNameRef.current!.value
-    const email :string = inEmailRef.current!.value
-    const subject :string = inSubjectRef.current!.value
-    const message :string = inMessageRef.current!.value
+    const fname: string = inNameRef.current!.value;
+    const email: string = inEmailRef.current!.value;
+    const subject: string = inSubjectRef.current!.value;
+    const message: string = inMessageRef.current!.value;
 
-
-    if(!fname || !email || !subject || !message) {
-      console.log("invalid")
-      return
+    if (!fname || !email || !subject || !message) {
+      console.log("invalid");
+      return;
     }
-    if(!isValidEmail(email)){
-      console.log("invalid email")
-      return
+    if (!isValidEmail(email)) {
+      console.log("invalid email");
+      return;
     }
-    if(!captcha){
-      console.log("invalid captcha")
-      return
+    if (!captcha) {
+      console.log("invalid captcha");
+      return;
     }
-  
 
-  emailjs
-  .send(process.env.NEXT_PUBLIC_emailJsServiceID!, process.env.NEXT_PUBLIC_emailJsTemplateID!, {fname,
-    email,
-    subject,
-    message}, {
-    publicKey: process.env.NEXT_PUBLIC_emailJsPublicKey!,
-  })
-  .then(
-    () => {
-      alert('Message was sent succefully!');
-    },
-    (error) => {
-      alert('Something went wrong');
-    },
-  );
-};
-
-
-
-
-  
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_emailJsServiceID!,
+        process.env.NEXT_PUBLIC_emailJsTemplateID!,
+        { fname, email, subject, message },
+        {
+          publicKey: process.env.NEXT_PUBLIC_emailJsPublicKey!,
+        }
+      )
+      .then(
+        () => {
+          alert("Message was sent succefully!");
+        },
+        (error) => {
+          alert("Something went wrong");
+        }
+      );
+  };
 
   return (
     <div
@@ -104,7 +92,7 @@ const Contact = () => {
       <label className="large-label" htmlFor="name">
         Name : <br />
         <input
-        ref={inNameRef}
+          ref={inNameRef}
           id="name"
           name="name"
           type="text"
@@ -130,7 +118,7 @@ const Contact = () => {
       <label className="large-label" htmlFor="subject">
         Subject : <br />
         <input
-        ref={inSubjectRef}
+          ref={inSubjectRef}
           id="subject"
           name="subject"
           type="text"
@@ -143,7 +131,7 @@ const Contact = () => {
       <label className="large-label" htmlFor="message">
         message : <br />
         <textarea
-        ref={inMessageRef}
+          ref={inMessageRef}
           id="message"
           name="message"
           placeholder="Write your message"
@@ -151,7 +139,12 @@ const Contact = () => {
         ></textarea>
       </label>
       <div className="flex flex-col items-center sm:flex-row sm:justify-around">
-        <input type="button" value="Send" className="bg-purple-950  shadow-lg shadow-purple-800/50 border-double border-4 border-purple-500  w-36 h-20  text-center rounded-md mt-1 mb-8 flex items-center justify-center hover:cursor-pointer " onClick={handleForm} />
+        <input
+          type="button"
+          value="Send"
+          className="bg-purple-950  shadow-lg shadow-purple-800/50 border-double border-4 border-purple-500  w-36 h-20  text-center rounded-md mt-1 mb-8 flex items-center justify-center hover:cursor-pointer "
+          onClick={handleForm}
+        />
 
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_CAPTCHA_KEY!}
