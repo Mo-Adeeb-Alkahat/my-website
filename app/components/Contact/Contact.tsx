@@ -17,6 +17,8 @@ const Contact = () => {
     message: string;
   }>({ fname: "", email: "", subject: "", message: "" });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const isValidEmail = (email: string): boolean => {
     const regex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -24,6 +26,7 @@ const Contact = () => {
   };
 
   const handleForm = () => {
+    setIsLoading(true);
     const fname: string = inNameRef.current!.value;
     const email: string = inEmailRef.current!.value;
     const subject: string = inSubjectRef.current!.value;
@@ -53,9 +56,12 @@ const Contact = () => {
       )
       .then(
         () => {
+          setIsLoading(false);
           alert("Message was sent succefully!");
         },
         (error) => {
+          setIsLoading(false);
+
           alert("Something went wrong");
         }
       );
@@ -145,6 +151,11 @@ const Contact = () => {
           className="bg-purple-950  shadow-lg shadow-purple-800/50 border-double border-4 border-purple-500  w-36 h-20  text-center rounded-md mt-1 mb-8 flex items-center justify-center hover:cursor-pointer "
           onClick={handleForm}
         />
+        {isLoading && (
+          <p className=" animate-pulse text-white-700 text-2xl mb-2 bg-purple-800 rounded-md p-1">
+            Sending please wait
+          </p>
+        )}
 
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_CAPTCHA_KEY!}
