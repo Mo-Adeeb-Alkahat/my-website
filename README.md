@@ -2,9 +2,9 @@
 [View live version](https://mo-adeeb-alkahat.vercel.app).
 
 ## Quick Start
-first clone the repo :
+first, clone the repo :
 ```bash
-git clone https://github.com/Mo-Adeeb-Alkahat/my-website
+git clone https://github.com/Mo-Adeeb-Alkahat/my-website.git
 ```
 
 then run the development server:
