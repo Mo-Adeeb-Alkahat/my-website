@@ -11,7 +11,7 @@ const Project: React.FC<{
 }> = (props) => {
   const { id, name, image, desc, ghLink, live } = props;
   return (
-    <li className=" flex flex-col items-center  gap-4  bg-slate-800 rounded-md w-3/4 min-h-96  pt-4   transition ease-in delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-slate-500 duration-300 ">
+    <li className=" flex flex-col items-center  gap-4  bg-slate-800 rounded-md w-3/4  sm:min-h-[515px]  pt-4   transition ease-in delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-slate-500 duration-300 ">
       <h3 className="text-3xl">{name}</h3>
 
       <Image

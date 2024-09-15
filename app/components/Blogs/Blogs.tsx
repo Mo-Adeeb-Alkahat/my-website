@@ -8,7 +8,7 @@ const Blogs = () => {
     <div className="flex flex-col items-center min-h-screen " id="Blogs">
       <h2 className="text-4xl underline mb-5">Blogs</h2>
 
-      <ul className="list-none flex flex-col items-center gap-4 lg:flex-row lg:mx-10 lg:mb-3 ">
+      <ul className="list-none sm:w-11/12 w-3/5 flex flex-col items-center gap-4 lg:flex-row lg:mx-10 lg:mb-3 ">
         {blogsData.map((blog) => {
           return (
             <Blog
