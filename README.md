@@ -1,9 +1,13 @@
-#Personal Website
+# Personal Website
 [View live version](https://mo-adeeb-alkahat.vercel.app).
 
-## Getting Started
+## Quick Start
+first clone the repo :
+```bash
+git clone https://github.com/Mo-Adeeb-Alkahat/my-website
+```
 
-First, run the development server:
+then run the development server:
 
 ```bash
 npm run dev
